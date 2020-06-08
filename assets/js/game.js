@@ -7,7 +7,7 @@ var playerMoney = 10;
 console.log(playerName, playerAttack, playerHealth);
 
 var enemyName = "Roborto";
-var enemyHealth = 50;
+var enemyHealth = 5;
 var enemyAttack = 12;
 
 var fight = function() {
