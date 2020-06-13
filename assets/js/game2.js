@@ -25,8 +25,7 @@ var fightOrSkip = function() {
       window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
       // subtract money from playerMoney for skipping
       playerInfo.playerMoney = playerInfo.money - 10;
-      shop();
-
+// return true if user wants to leave
       return true;
     }
   }
@@ -61,7 +60,7 @@ var fight = function(enemy) {
       // leave while() loop since enemy is dead
         break;
       } else {
-      window.alert(enemy.namee + " still has " + enemy.health + " health left.");
+      window.alert(enemy.name + " still has " + enemy.health + " health left.");
     }
 
     // generate random damage value based on enemy's attack power
@@ -69,7 +68,7 @@ var fight = function(enemy) {
     // remove player's health by subtracting the amount set in the enemy.attack variable
     playerInfo.health = Math.max(0, playerInfo.health - damage);
     console.log(
-      enemy.namee + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining.");
+      enemy.name + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining.");
 
     // check player's health
     if (playerInfo.health <= 0) {
@@ -181,6 +180,7 @@ var getPlayerName = function () {
   while (name === "" || name === null) {
     name = prompt("What is your robot's name?");
   }
+  return name;
 };
 
 /* GAME INFORMATION / VARIABLES */
