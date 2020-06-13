@@ -24,8 +24,8 @@ var fightOrSkip = function() {
     if (confirmSkip) {
       window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
       // subtract money from playerMoney for skipping
-      playerInfo.playerMoney = Math.max(0, playerInfo.money - 10);
-
+      playerInfo.playerMoney = playerInfo.money - 10;
+// return true if user wants to leave
       return true;
     }
   }
@@ -36,10 +36,11 @@ var fight = function(enemy) {
       // repeat and execute as long as the enemy robot is alive 
   while(playerInfo.health > 0 && enemy.health > 0) {
       //ask the user if they'd like to fight or skip using fightOrSkip funcion
-    if(fightOrSkip()) {
-      // if true, leave the fight by brekaing the loop
+    if (fightOrSkip()) {
+      // if true, leave fight by breaking loop
       break;
-    } 
+    }
+
     // generate random damage value based on player's atack power
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
@@ -59,7 +60,7 @@ var fight = function(enemy) {
       // leave while() loop since enemy is dead
         break;
       } else {
-      window.alert(enemy.namee + " still has " + enemy.health + " health left.");
+      window.alert(enemy.name + " still has " + enemy.health + " health left.");
     }
 
     // generate random damage value based on enemy's attack power
@@ -67,7 +68,7 @@ var fight = function(enemy) {
     // remove player's health by subtracting the amount set in the enemy.attack variable
     playerInfo.health = Math.max(0, playerInfo.health - damage);
     console.log(
-      enemy.namee + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining.");
+      enemy.name + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining.");
 
     // check player's health
     if (playerInfo.health <= 0) {
@@ -179,6 +180,7 @@ var getPlayerName = function () {
   while (name === "" || name === null) {
     name = prompt("What is your robot's name?");
   }
+  return name;
 };
 
 /* GAME INFORMATION / VARIABLES */
